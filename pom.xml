@@ -64,6 +64,13 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- flyway -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-maven-plugin</artifactId>
+			<version>7.10.0</version>
+			<type>maven-plugin</type>
+		</dependency>
     </dependencies>
 
 	<build>
