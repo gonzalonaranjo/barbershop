@@ -65,14 +65,9 @@ public class UserController {
 
         // valido o paso? no lo encontrará en BBDD
 
-        service.validateLogin(userMap.mapValidateUserRequestToDomain(email, password));
+        service.validateCredentials(userMap.mapValidateUserRequestToDomain(email, password));
         // tenemos que generar el token
 
         return ResponseEntity.ok("TOKEN_GENERADO");
-    }
-
-    @GetMapping("/prueba")
-    public String prueba() {
-        return "prueba";
     }
 }

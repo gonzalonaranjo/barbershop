@@ -10,7 +10,7 @@ public interface UserService {
 
     void deleteUser(final User user);
 
-    Boolean validateLogin(final User user);
+    void validateCredentials(final User user);
 
     User getUserByEmail(String email);
 }
