@@ -3,6 +3,7 @@ package com.gonzalo.barbershop.infrastructure.service;
 import com.gonzalo.barbershop.application.repository.UserRepository;
 import com.gonzalo.barbershop.application.service.UserService;
 import com.gonzalo.barbershop.domain.User;
+import com.gonzalo.barbershop.domain.error.NotAuthorizatedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +15,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createNewUser(final User user) {
-
+        repository.createUser(user);
     }
 
     @Override
     public void updateUser(final User user) {
+        var userFound = getUserByEmail(user.getEmail());
+        userFound.setName(user.getName());
+        userFound.setPassword(user.getPassword());
+        userFound.setSurName(user.getPassword());
 
+        repository.updateUser(user);
     }
 
     @Override
@@ -28,8 +34,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean validateLogin(final User user) {
-        return null;
+    public void validateCredentials(final User user) {
+
+        var userFound = getUserByEmail(user.getEmail());
+
+        if (!userFound.getPassword().equals(user.getPassword())) {
+            throw new NotAuthorizatedException("Incorrect password");
+        }
     }
 
     @Override

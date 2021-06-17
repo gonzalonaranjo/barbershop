@@ -8,4 +8,6 @@ import org.mapstruct.Mapper;
 public interface UserMapper {
 
     User mapUserDboToDomain(UserDbo source);
+
+    UserDbo mapUserToDbo(User source);
 }

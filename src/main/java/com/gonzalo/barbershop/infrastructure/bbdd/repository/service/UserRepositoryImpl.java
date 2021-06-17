@@ -27,4 +27,14 @@ public class UserRepositoryImpl implements UserRepository {
 
         return maybeUser.map(map::mapUserDboToDomain).orElseThrow(() -> new NotFoundException("User not found"));
     }
+
+    @Override
+    public void updateUser(User user) {
+
+    }
+
+    @Override
+    public void createUser(User user) {
+
+    }
 }
